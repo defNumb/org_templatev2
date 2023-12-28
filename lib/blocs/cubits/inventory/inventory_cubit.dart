@@ -10,8 +10,7 @@ part 'inventory_state.dart';
 
 class InventoryCubit extends Cubit<InventoryState> {
   late final InventoryService inventoryService;
-  InventoryCubit({required this.inventoryService})
-      : super(InventoryState.initial());
+  InventoryCubit({required this.inventoryService}) : super(InventoryState.initial());
 
   // create inventory
   Future<void> createInventory(Inventory inventory) async {
@@ -26,9 +25,7 @@ class InventoryCubit extends Cubit<InventoryState> {
       throw CustomError(message: e.message!, code: e.code, plugin: e.plugin);
     } catch (e) {
       throw CustomError(
-          message: e.toString(),
-          code: 'Exception',
-          plugin: 'ServerError: createInventory');
+          message: e.toString(), code: 'Exception', plugin: 'ServerError: createInventory');
     }
   }
 
@@ -48,9 +45,7 @@ class InventoryCubit extends Cubit<InventoryState> {
       throw CustomError(message: e.message!, code: e.code, plugin: e.plugin);
     } catch (e) {
       throw CustomError(
-          message: e.toString(),
-          code: 'Exception',
-          plugin: 'ServerError: updateInventory');
+          message: e.toString(), code: 'Exception', plugin: 'ServerError: updateInventory');
     }
   }
 
@@ -70,9 +65,24 @@ class InventoryCubit extends Cubit<InventoryState> {
       throw CustomError(message: e.message!, code: e.code, plugin: e.plugin);
     } catch (e) {
       throw CustomError(
-          message: e.toString(),
-          code: 'Exception',
-          plugin: 'ServerError: deleteInventory');
+          message: e.toString(), code: 'Exception', plugin: 'ServerError: deleteInventory');
+    }
+  }
+
+  // get inventory
+  Future<void> getInventory() async {
+    try {
+      final inventory = await inventoryService.getInventory();
+      emit(
+        state.copyWith(
+          inventory: inventory.docs.map((e) => Inventory.fromJson(e.data())).toList(),
+        ),
+      );
+    } on FirebaseException catch (e) {
+      throw CustomError(message: e.message!, code: e.code, plugin: e.plugin);
+    } catch (e) {
+      throw CustomError(
+          message: e.toString(), code: 'Exception', plugin: 'ServerError: getInventory');
     }
   }
 }

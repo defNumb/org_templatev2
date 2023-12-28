@@ -27,9 +27,8 @@ void main() async {
   // Setting up HydratedBloc
   // This will help store information in the device
   HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: kIsWeb
-        ? HydratedStorage.webStorageDirectory
-        : await getApplicationDocumentsDirectory(),
+    storageDirectory:
+        kIsWeb ? HydratedStorage.webStorageDirectory : await getApplicationDocumentsDirectory(),
   );
 
   runApp(const MyApp());
