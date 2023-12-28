@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "81502817243",
+    "project_id": "inventory-org-c25fe",
+    "storage_bucket": "inventory-org-c25fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81502817243:android:4b46f1afdbdc2269e135fe",
+        "android_client_info": {
+          "package_name": "com.example.org_templatev2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbzJLJlY-P6XZR7dVSXhL0Dl053eDoGcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
